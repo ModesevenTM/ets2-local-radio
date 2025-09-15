@@ -24,6 +24,8 @@ var g_last_nearest_country = "";
 var g_whitenoise = true;
 //global hls object:
 var g_hls = null;
+//global dash object:
+var g_dash = null;
 //last command id from desktop received:
 var g_last_command = "0";
 //show all radio stations:
@@ -359,6 +361,11 @@ function setRadioStation(url, country, volume) {
                 g_hls.destroy();
                 g_hls = null;
             }
+            //Detach DASH
+            if (g_dash != null) {
+                g_dash.destroy();
+                g_dash = null;
+            }
             var cleanUrl = url;
             if(url.indexOf("?") !== -1){
                 cleanUrl = cleanUrl.split("?")[0];
@@ -377,6 +384,10 @@ function setRadioStation(url, country, volume) {
                 g_hls.on(Hls.Events.MEDIA_ATTACHED, function () {
                     g_hls.loadSource(g_current_url);
                 });
+            } else if (cleanUrl.endsWith("mpd") || url.endsWith("mpd")) {
+                //DASH
+                g_dash = dashjs.MediaPlayer().create();
+                g_dash.initialize(document.getElementById("player"), g_current_url, true);
             } else {
                 document.getElementById("player").src = url;
                 //document.getElementById("player").play();

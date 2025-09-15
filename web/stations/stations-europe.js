@@ -8062,6 +8062,16 @@ var stations = {/*
             url: "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_one.m3u8"
         },
         {
+            name: "BBC Radio 1 Anthems",
+            logo: "stations/images-europe/uk/BBC Radio 1 Anthems.png",
+            url: "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/dash/nonuk/pc_hd_abr_v2/aks/bbc_radio_one_anthems.mpd"
+        },
+        {
+            name: "BBC Radio 1 Dance",
+            logo: "stations/images-europe/uk/BBC Radio 1 Dance.png",
+            url: "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_one_dance.m3u8"
+        },
+        {
             name: "BBC Radio 1Xtra",
             logo: "stations/images-europe/uk/BBC Radio 1Xtra.png",
             url: "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_1xtra.m3u8"
@@ -8075,6 +8085,11 @@ var stations = {/*
             name: "BBC Radio 3",
             logo: "stations/images-europe/uk/BBC Radio 3.png",
             url: "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_three.m3u8"
+        },
+        {
+            name: "BBC Radio 3 Unwind",
+            logo: "stations/images-europe/uk/BBC Radio 3 Unwind.png",
+            url: "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/dash/nonuk/pc_hd_abr_v2/aks/bbc_radio_three_unwind.mpd"
         },
         {
             name: "BBC Radio 4",
