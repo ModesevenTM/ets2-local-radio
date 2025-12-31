@@ -203,11 +203,23 @@ var country_properties = {
         code: "eg",
         relative_radius: 1,
     },
+    "equatorialguinea": {
+        name: "Guinea Ecuatorial",
+        name_english: "Equatorial Guinea",
+        code: "gq",
+        relative_radius: 1,
+    },
     "estonia": {
         name: "Eesti",
         name_english: "Estonia",
         code: "ee",
         relative_radius: 0.75,
+    },
+    "ethiopia": {
+        name: "ኢትዮጵያ",
+        name_english: "Ethiopia",
+        code: "et",
+        relative_radius: 1,
     },
     "faroe": {
         name: "Føroyar",
@@ -226,6 +238,12 @@ var country_properties = {
         name_english: "France",
         code: "fr",
         relative_radius: 1.05,
+    },
+    "gambia": {
+        name: "The Gambia",
+        name_english: "The Gambia",
+        code: "gm",
+        relative_radius: 1,
     },
     "georgia": {
         name: "საქართველო",
@@ -357,6 +375,12 @@ var country_properties = {
         name: "Deutschland [WDR]",
         name_english: "Germany [WDR]",
         code: "de",
+        relative_radius: 1,
+    },
+    "ghana": {
+        name: "Ghana",
+        name_english: "Ghana",
+        code: "gh",
         relative_radius: 1,
     },
     "gibraltar": {
@@ -755,6 +779,12 @@ var country_properties = {
         code: "si",
         relative_radius: 0.6,
     },
+    "somalia": {
+        name: "Soomaaliya",
+        name_english: "Somalia",
+        code: "so",
+        relative_radius: 1,
+    },
     "southafrica": {
         name: "South Africa",
         name_english: "South Africa",
@@ -903,12 +933,6 @@ var country_properties = {
         name: "الصحراء الغربية",
         name_english: "Western Sahara",
         code: "eh",
-        relative_radius: 1,
-    },
-    "tajikistan": {
-        name: "Тоҷикистон",
-        name_english: "Tajikistan",
-        code: "tj",
         relative_radius: 1,
     },
     "zambia": {
@@ -20730,6 +20754,466 @@ var cities_riw = [
     }
 ];
 
+var cities_horn_of_africa = [
+    {
+        "gameName": "afmadow",
+        "realName": "Afmadow",
+        "country": "somalia",
+        "x": "228488.8",
+        "y": "85",
+        "z": "278660.6"
+    },
+    {
+        "gameName": "baardheere",
+        "realName": "Baardheere",
+        "country": "somalia",
+        "x": "241800.1",
+        "y": "49.87891",
+        "z": "240159.6"
+    },
+    {
+        "gameName": "balcad",
+        "realName": "Balcad",
+        "country": "somalia",
+        "x": "247777.1",
+        "y": "80",
+        "z": "260657.5"
+    },
+    {
+        "gameName": "bangali",
+        "realName": "Bangali",
+        "country": "kenya",
+        "x": "202451.7",
+        "y": "57.88672",
+        "z": "295000.8"
+    },
+    {
+        "gameName": "beledweyne",
+        "realName": "Beledweyne",
+        "country": "somalia",
+        "x": "240390.3",
+        "y": "47.32813",
+        "z": "239930.9"
+    },
+    {
+        "gameName": "bulobarde",
+        "realName": "Bulobarde",
+        "country": "somalia",
+        "x": "242868.5",
+        "y": "80",
+        "z": "250898.8"
+    },
+    {
+        "gameName": "buulo",
+        "realName": "Buulo Mareer",
+        "country": "somalia",
+        "x": "242753.2",
+        "y": "96.98047",
+        "z": "270237.5"
+    },
+    {
+        "gameName": "cadaado",
+        "realName": "Cadaado",
+        "country": "somalia",
+        "x": "248268.5",
+        "y": "45.41797",
+        "z": "222157.8"
+    },
+    {
+        "gameName": "dhobley",
+        "realName": "Dhobley",
+        "country": "somalia",
+        "x": "222877",
+        "y": "80",
+        "z": "278247.7"
+    },
+    {
+        "gameName": "dusmareb",
+        "realName": "Dusmareb",
+        "country": "somalia",
+        "x": "246310.4",
+        "y": "100",
+        "z": "232503.7"
+    },
+    {
+        "gameName": "ferfer",
+        "realName": "Ferfer",
+        "country": "ethiopia",
+        "x": "239759.5",
+        "y": "39.5625",
+        "z": "237860.8"
+    },
+    {
+        "gameName": "gaalkacyo",
+        "realName": "Gaalkacyo",
+        "country": "somalia",
+        "x": "253288.5",
+        "y": "45.41797",
+        "z": "210864.1"
+    },
+    {
+        "gameName": "galinsoor",
+        "realName": "Galinsoor",
+        "country": "somalia",
+        "x": "247736.1",
+        "y": "50",
+        "z": "219101.6"
+    },
+    {
+        "gameName": "garissa",
+        "realName": "Garissa",
+        "country": "kenya",
+        "x": "207317.9",
+        "y": "57.88672",
+        "z": "293242.3"
+    },
+    {
+        "gameName": "godinlabe",
+        "realName": "Godinlabe",
+        "country": "somalia",
+        "x": "249626.6",
+        "y": "45.41797",
+        "z": "225090.3"
+    },
+    {
+        "gameName": "golweyn",
+        "realName": "Golweyn",
+        "country": "somalia",
+        "x": "243273.6",
+        "y": "81.47266",
+        "z": "269125.9"
+    },
+    {
+        "gameName": "guriceel",
+        "realName": "Guriceel",
+        "country": "somalia",
+        "x": "243770.5",
+        "y": "45.48438",
+        "z": "233525.4"
+    },
+    {
+        "gameName": "hagadera",
+        "realName": "Hagadera",
+        "country": "kenya",
+        "x": "217089.6",
+        "y": "57.88672",
+        "z": "283893.7"
+    },
+    {
+        "gameName": "haramka",
+        "realName": "Haramka",
+        "country": "somalia",
+        "x": "237078.6",
+        "y": "55.67188",
+        "z": "277964.2"
+    },
+    {
+        "gameName": "jawiil",
+        "realName": "Jawiil",
+        "country": "somalia",
+        "x": "240378.3",
+        "y": "46.54688",
+        "z": "238555.3"
+    },
+    {
+        "gameName": "jilib",
+        "realName": "Jilib",
+        "country": "somalia",
+        "x": "234543.9",
+        "y": "125.5898",
+        "z": "280069.7"
+    },
+    {
+        "gameName": "liboi",
+        "realName": "Liboi",
+        "country": "kenya",
+        "x": "219593.3",
+        "y": "57.88672",
+        "z": "279802"
+    },
+    {
+        "gameName": "mataban",
+        "realName": "Mataban",
+        "country": "somalia",
+        "x": "241820.1",
+        "y": "45.48438",
+        "z": "235682.3"
+    },
+    {
+        "gameName": "mirig",
+        "realName": "Mirig",
+        "country": "somalia",
+        "x": "246953.9",
+        "y": "45.41797",
+        "z": "229147.7"
+    },
+    {
+        "gameName": "muqdisho",
+        "realName": "Muqdisho",
+        "country": "somalia",
+        "x": "246685.5",
+        "y": "250",
+        "z": "264470.4"
+    },
+    {
+        "gameName": "mustahil",
+        "realName": "Mustahil",
+        "country": "ethiopia",
+        "x": "235693.7",
+        "y": "41.43359",
+        "z": "237550.1"
+    },
+    {
+        "gameName": "nguni",
+        "realName": "Nguni",
+        "country": "kenya",
+        "x": "200213.4",
+        "y": "53.37109",
+        "z": "296167.6"
+    },
+    {
+        "gameName": "sadax_higlo",
+        "realName": "Sadax Higlo",
+        "country": "somalia",
+        "x": "250915.7",
+        "y": "45.41797",
+        "z": "217695.7"
+    },
+    {
+        "gameName": "xaaji",
+        "realName": "xaaji",
+        "country": "somalia",
+        "x": "251267.7",
+        "y": "80",
+        "z": "257419.1"
+    }
+];
+
+var cities_heart_of_africa = [
+    {
+        "gameName": "banjul",
+        "realName": "Banjul",
+        "country": "gambia",
+        "x": "-190628",
+        "y": "71.14844",
+        "z": "178219.1"
+    },
+    {
+        "gameName": "barra_afro",
+        "realName": "Barra",
+        "country": "gambia",
+        "x": "-189910",
+        "y": "71.14844",
+        "z": "178134.1"
+    },
+    {
+        "gameName": "bignona",
+        "realName": "Bignona",
+        "country": "senegal",
+        "x": "-189850.6",
+        "y": "71.91406",
+        "z": "183392.7"
+    },
+    {
+        "gameName": "brikama",
+        "realName": "Brikama",
+        "country": "gambia",
+        "x": "-191280.7",
+        "y": "71.14844",
+        "z": "179319"
+    },
+    {
+        "gameName": "bwiam",
+        "realName": "Bwiam",
+        "country": "gambia",
+        "x": "-188549",
+        "y": "76.76563",
+        "z": "180569.8"
+    },
+    {
+        "gameName": "fatick",
+        "realName": "Fatick",
+        "country": "senegal",
+        "x": "-186922.2",
+        "y": "71.14844",
+        "z": "173181.5"
+    },
+    {
+        "gameName": "gunjur",
+        "realName": "Gunjur",
+        "country": "gambia",
+        "x": "-192375",
+        "y": "71.14844",
+        "z": "179467.3"
+    },
+    {
+        "gameName": "kaolack",
+        "realName": "Kaolack",
+        "country": "senegal",
+        "x": "-184407.6",
+        "y": "71.37109",
+        "z": "173570.5"
+    },
+    {
+        "gameName": "karang",
+        "realName": "Karang",
+        "country": "senegal",
+        "x": "-189160.1",
+        "y": "71.14844",
+        "z": "177798.3"
+    },
+    {
+        "gameName": "madina_ba",
+        "realName": "Madina Ba",
+        "country": "gambia",
+        "x": "-190639.1",
+        "y": "71.14844",
+        "z": "179454.2"
+    },
+    {
+        "gameName": "passi",
+        "realName": "Passi",
+        "country": "senegal",
+        "x": "-187065.6",
+        "y": "71.14844",
+        "z": "175700.9"
+    },
+    {
+        "gameName": "serrekunda",
+        "realName": "Serrekunda",
+        "country": "gambia",
+        "x": "-191970.9",
+        "y": "76.76563",
+        "z": "178231.1"
+    }
+];
+
+var cities_africa_extended = [
+    {
+        "gameName": "benin",
+        "realName": "Benin",
+        "country": "nigeria",
+        "x": "-53024.08",
+        "y": "75.98047",
+        "z": "270860.8"
+    },
+    {
+        "gameName": "lagos",
+        "realName": "Lagos",
+        "country": "nigeria",
+        "x": "-69698.8",
+        "y": "76.83594",
+        "z": "267300.3"
+    },
+    {
+        "gameName": "onitsha",
+        "realName": "Onitsha",
+        "country": "nigeria",
+        "x": "-44525.49",
+        "y": "75.98047",
+        "z": "273414.7"
+    },
+    {
+        "gameName": "ore",
+        "realName": "Ore",
+        "country": "nigeria",
+        "x": "-58251.76",
+        "y": "75.98047",
+        "z": "267045.2"
+    },
+];
+
+var cities_west_africa = [
+    {
+        "gameName": "atebubu",
+        "realName": "atebubu",
+        "country": "ghana",
+        "x": "-99090.38",
+        "y": "50.82031",
+        "z": "251546"
+    },
+    {
+        "gameName": "bon_lanuar",
+        "realName": "bon_lanuar",
+        "country": "mauritania",
+        "x": "-167849.1",
+        "y": "56.76953",
+        "z": "132834"
+    },
+    {
+        "gameName": "kumasi",
+        "realName": "kumasi",
+        "country": "ghana",
+        "x": "-103646.6",
+        "y": "50.82031",
+        "z": "256374.5"
+    },
+    {
+        "gameName": "luba",
+        "realName": "Luba",
+        "country": "equatorialguinea",
+        "x": "-35462.26",
+        "y": "74.96484",
+        "z": "294397"
+    },
+    {
+        "gameName": "malabo",
+        "realName": "Malabo",
+        "country": "equatorialguinea",
+        "x": "-33893.14",
+        "y": "74.96484",
+        "z": "292927.7"
+    },
+    {
+        "gameName": "nouadhibou",
+        "realName": "nouadhibou",
+        "country": "mauritania",
+        "x": "-169674.2",
+        "y": "56.76953",
+        "z": "133700.8"
+    },
+    {
+        "gameName": "nouakchott",
+        "realName": "nouakchott",
+        "country": "mauritania",
+        "x": "-170474.1",
+        "y": "56.73828",
+        "z": "147627.9"
+    },
+    {
+        "gameName": "salaga",
+        "realName": "salaga",
+        "country": "ghana",
+        "x": "-95387.94",
+        "y": "59.55469",
+        "z": "243894.9"
+    },
+    {
+        "gameName": "tamale",
+        "realName": "tamale",
+        "country": "ghana",
+        "x": "-95539.77",
+        "y": "59.87109",
+        "z": "238656.7"
+    },
+    {
+        "gameName": "tiouilit",
+        "realName": "tiouilit",
+        "country": "mauritania",
+        "x": "-170397.1",
+        "y": "57.08594",
+        "z": "146698"
+    },
+    {
+        "gameName": "yeji",
+        "realName": "yeji",
+        "country": "ghana",
+        "x": "-95437.05",
+        "y": "80",
+        "z": "246950.8"
+    },
+];
+
 cities = cities.concat(cities_rusmap); //RusMap cities
 cities = cities.concat(cities_pm230); //ProMods 2.30 cities
 cities = cities.concat(cities_pm240); //ProMods 2.40 cities
@@ -20773,3 +21257,7 @@ cities = cities.concat(cities_otgr) // Off The Grid Map
 cities = cities.concat(cities_trans_siberian) // Trans-Siberian Truckway
 cities = cities.concat(cities_beyond) // Beyond by TerraMaps
 cities = cities.concat(cities_riw) // Road Into Wilderness
+cities = cities.concat(cities_horn_of_africa) // Horn of Africa
+cities = cities.concat(cities_heart_of_africa) // Heart of Africa
+cities = cities.concat(cities_africa_extended) // Africa Extended
+cities = cities.concat(cities_west_africa) // West Africa
