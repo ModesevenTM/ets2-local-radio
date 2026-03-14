@@ -8,8 +8,14 @@ var g_language = "en-GB";
 var g_translation;
 //countries near you global:
 var g_countries = {};
+//countries categorized by reception global:
+var g_country_buckets = {};
 //stations near you global:
 var g_stations = [];
+//station networks global:
+var g_station_links = {};
+//service follow timeout global:
+var g_service_follow_timeout = null;
 //favourites global:
 var g_favourites = {};
 //current country for that radio:
@@ -191,6 +197,7 @@ function refresh(data) {
             whitenoise: 0
         }
     };
+    var available_countries_buckets = {};
 
     /*
     if(!data.Drivetrain.EngineEnabled) {
@@ -273,6 +280,11 @@ function refresh(data) {
         for (var key in available_countries) {
             if (!available_countries.hasOwnProperty(key)) continue;
             if (key === "global") continue;
+            var this_country_reception = calculateReception(available_countries[key].whitenoise);
+            if(!available_countries_buckets.hasOwnProperty(this_country_reception)){
+                available_countries_buckets[this_country_reception] = [];
+            }
+            available_countries_buckets[this_country_reception].push(available_countries[key].country);
             if (available_countries[key].whitenoise <= lowest_whitenoise) {
                 lowest_whitenoise = available_countries[key].whitenoise;
                 country_best_reception = available_countries[key].country;
@@ -280,6 +292,12 @@ function refresh(data) {
         }
 
         available_countries = sortObject(available_countries);
+        var reception_levels = ["0", "1", "2", "3", "4", "5"];
+        reception_levels.forEach(function (level) {
+            if (available_countries_buckets.hasOwnProperty(level)) {
+                available_countries_buckets[level].sort();
+            }
+        });
 
         $(".nearestCity").html(city_lowest_distance + "; " + country_lowest_distance);
         $(".distance").html(parseFloat(lowest_distance).toFixed(2));
@@ -315,9 +333,11 @@ function refresh(data) {
                 });
             }
 
-            if (Object.keys(available_countries).toString() != Object.keys(g_countries).toString()) {
+            if (Object.keys(available_countries).toString() != Object.keys(g_countries).toString()
+               || Object.keys(available_countries_buckets).toString() != Object.keys(g_country_buckets).toString()) {
                 //If they don't contain the same keys (ie. a country update)
                 g_countries = available_countries;
+                g_country_buckets = available_countries_buckets;
 
                 refreshStations();
                 /*
@@ -328,9 +348,38 @@ function refresh(data) {
                 }
                 */
             } else {
+                let refresh_needed = false;
+                reception_levels.forEach(function (level) {
+                    if (available_countries_buckets.hasOwnProperty(level)) {
+                        if(available_countries_buckets[level].toString() != g_country_buckets[level].toString()){
+                            //If the buckets don't contain the same countries (ie. a reception update)
+                            refresh_needed = true;
+                        }
+                    }
+                });
+                if(refresh_needed){
+                    refreshStations();
+                }
                 setWhitenoise(available_countries[g_current_country]["whitenoise"]);
                 g_countries = available_countries;
+                g_country_buckets = available_countries_buckets;
+            }
 
+            // If a station has coverage in multiple countries, set the reception to the best reception of those countries
+            var clean_url = g_current_url.replace(/^https?:\/{2,}/gm, '');
+            if (g_station_links.hasOwnProperty(clean_url) && g_station_links[clean_url].size > 1) {
+                var best_reception_country = g_station_links[clean_url].values().next().value;
+                g_station_links[clean_url].forEach(function (country) {
+                    var reception = g_countries[country]["whitenoise"];
+                    if (reception < g_countries[best_reception_country]["whitenoise"]) {
+                        best_reception_country = country;
+                    }
+                });
+                if (best_reception_country != g_current_country && g_service_follow_timeout == null) {
+                    g_service_follow_timeout = setTimeout(function() {
+                        serviceFollow(best_reception_country, clean_url);
+                    }, 7500);
+                }
             }
         }
     }
@@ -339,6 +388,12 @@ function refresh(data) {
 function setRadioStation(url, country, volume) {
     //Set current listening country for when crossing the border
     g_current_url = url;
+
+    if(g_service_follow_timeout)
+    {
+        clearTimeout(g_service_follow_timeout);
+        g_service_follow_timeout = null;
+    }
 
     if(conn != null && conn.open && !controlRemote){
         conn.send(JSON.stringify({
@@ -474,6 +529,34 @@ function setFavouriteStation(country, name) {
     }
 }
 
+function serviceFollow(country, url) {
+    clearTimeout(g_service_follow_timeout);
+    g_service_follow_timeout = null;
+    console.log("Service switch from " + g_current_country + " to " + country);
+    g_current_country = country;
+    setWhitenoise(g_countries[g_current_country]["whitenoise"]);
+    // regex match url in station_links to get the station name for the current url
+    var station_name = "";
+    var station_logo = "";
+    stations[g_current_country].forEach(function (station) {
+        if (station.url.replace(/^https?:\/{2,}/gm, '') == url) {
+            station_name = station.name;
+            station_logo = station.logo;
+            g_current_url = station.url;
+            return;
+        }
+    });
+    $(".current-station").html(station_name);
+    $(".current-station-country").html(country_properties[g_current_country].name);
+    $(".current-station-flag").attr("src", "lib/flags/" + country_properties[g_current_country].code + ".svg");
+    var reception = calculateReception(g_countries[g_current_country]["whitenoise"]);
+    $(".signal").attr("src", "lib/img/signal/" + reception + ".png");
+    refreshStations();
+    $.get(g_api + "/station/" + encodeURIComponent(station_name) + "/" +
+    calculateReception(g_countries[g_current_country].whitenoise) + "/?" +
+    getFullLogoUrl(station_logo));
+}
+
 function setCurrentAsFavourite() {
     if(g_current_country != null) {
         var index = stations[g_current_country].map(function (e) {
@@ -585,19 +668,18 @@ function getFullLogoUrl(logo) {
 }
 
 function calculateReception(whitenoise) {
-    var reception = Math.pow(parseFloat(whitenoise), 2) - 0.15;
-    if(reception  < 0.05){
+    // approximated version, y = sqrt(x+0.15)
+    var reception = "0";
+    if(whitenoise < 0.447213595499958){
         reception = "5";
-    } else if(reception < 0.20){
+    } else if(whitenoise < 0.591607978309962){
         reception = "4";
-    } else if(reception < 0.35){
+    } else if(whitenoise < 0.707106781186548){
         reception = "3";
-    } else if(reception < 0.50){
+    } else if(whitenoise < 0.806225774829855){
         reception = "2";
-    } else if(reception < 0.75){
+    } else if(whitenoise < 0.948683298050514){
         reception = "1";
-    } else {
-        reception = "0";
     }
     return reception;
 }
@@ -605,6 +687,7 @@ function calculateReception(whitenoise) {
 function refreshStations() {
     var content = "";
     var available_stations = [];
+    var station_links = {};
     for (var key in g_countries) {
         //Check whether country should be checked:
         if (!g_countries.hasOwnProperty(key)) continue;
@@ -625,6 +708,14 @@ function refreshStations() {
                 volume: volume
             });
 
+            var clean_url = stations[key][j]['url'].replace(/^https?:\/{2,}/gm, '');
+            if(!station_links.hasOwnProperty(clean_url)){
+                station_links[clean_url] = new Set();
+            }
+            station_links[clean_url].add(key);
+
+            var reception = calculateReception(g_countries[key]["whitenoise"]);
+
             //Check whether the station distance can reached here:
             if (typeof stations[key][j]["relative_radius"] === "undefined" || g_countries[key]["distance"] / stations[key][j]["relative_radius"] < g_skinConfig.radius) {
                 //TODO: Stop playback when station is out of reach
@@ -636,8 +727,6 @@ function refreshStations() {
                     relative_whitenoise = city_properties[key]["relative_whitenoise"];
                 }
                 */
-
-                var reception = calculateReception(g_countries[key]["whitenoise"]);
 
                 content +=
                     '<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">' +
@@ -673,6 +762,7 @@ function refreshStations() {
         $(".music-controller-favourite > button").css("color", "#ffffff");
     }
     g_stations = available_stations;
+    g_station_links = station_links;
 }
 
 function refreshLanguage() {
