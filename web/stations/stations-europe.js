@@ -1169,6 +1169,33 @@ var stations = {
             url: "https://stream.ceit.be/sudradio-belgique"
         }
     ],
+    "benin": [
+        {
+            name: "Radio Bénin",
+            logo: "stations/images-europe/benin/Radio Bénin.png",
+            url: "https://listen.radioking.com/radio/47608/stream/84430"
+        },
+        {
+            name: "Radio Bénin Alafia",
+            logo: "stations/images-europe/benin/Radio Bénin Alafia.png",
+            url: "https://listen.radioking.com/radio/744487/stream/811039"
+        },
+        {
+            name: "Radio Parakou",
+            logo: "stations/images-europe/benin/Radio Parakou.png",
+            url: "https://listen.radioking.com/radio/51919/stream/88927"
+        },
+        {
+            name: "Kiff FM",
+            logo: "stations/images-europe/benin/Kiff FM.png",
+            url: "https://listen.radioking.com/radio/613798/stream/675604"
+        },
+        {
+            name: "Radio Immaculée Conception",
+            logo: "stations/images-europe/benin/Radio Immaculée Conception.png",
+            url: "http://de1.streamingpulse.com:9079/stream.mp3"
+        },
+    ],
     "bosnia": [
         {
             name: "BHR1",
@@ -1259,6 +1286,38 @@ var stations = {
             name: "RTRS",
             logo: "stations/images-europe/bosnia/RTRS.png",
             url: "https://radio.rtrs.tv/radio/live/playlist.m3u8"
+        },
+    ],
+    "botswana": [
+        {
+            name: "Radio Botswana",
+            logo: "stations/images-europe/botswana/Radio Botswana.png",
+            url: "https://streaming.massmedia.co.bw/memfs/f008e1c6-5acf-4f92-9fb2-1677ddf74025.m3u8"
+        },
+        {
+            name: "RB2",
+            logo: "stations/images-europe/botswana/RB2.png",
+            url: "https://streaming.massmedia.co.bw/memfs/9f871f25-1c31-4641-a059-fd56c8c2c279.m3u8"
+        },
+        {
+            name: "Duma FM",
+            logo: "stations/images-europe/botswana/Duma FM.png",
+            url: "https://stream.zeno.fm/16ve08sfy4zuv"
+        },
+        {
+            name: "Gabz FM",
+            logo: "stations/images-europe/botswana/Gabz FM.png",
+            url: "https://stream.zeno.fm/y4fgv9tfy4zuv"
+        },
+        {
+            name: "UB Radio",
+            logo: "stations/images-europe/botswana/UB Radio.png",
+            url: "https://stream.rcs.revma.com/63tt2c7su8hvv"
+        },
+        {
+            name: "Yarona FM",
+            logo: "stations/images-europe/botswana/Yarona FM.png",
+            url: "https://stream.zeno.fm/u9s22hgbz4zuv"
         },
     ],
     "bulgaria": [
@@ -2244,6 +2303,23 @@ var stations = {
             url: "https://streaming.radio.co/scc13a6b96/listen"
         },*/
     ],
+    "equatorialguinea": [
+        {
+            name: "Radio Nacional de Guinea Ecuatorial",
+            logo: "stations/images-europe/equatorialguinea/Radio Nacional de Guinea Ecuatorial.png",
+            url: "https://server.radiomalabo.com/stream"
+        },
+        {
+            name: "BBC World Service",
+            logo: "stations/images-europe/netherlands/BBC World Service.png",
+            url: "https://stream.live.vc.bbcmedia.co.uk/bbc_world_service_west_africa",
+        },
+        {
+            name: "RFI Afrique",
+            logo: "stations/images-europe/chad/RFI Afrique.png",
+            url: "https://rfiafrique64k.ice.infomaniak.ch/rfiafrique-64.mp3"
+        },
+    ],
     "estonia": [
         {
             name: "Vikerraadio",
@@ -2409,6 +2485,13 @@ var stations = {
             name: "Tre Raadio",
             logo: "stations/images-europe/estonia/Tre Raadio.png",
             url: "https://cdn.treraadio.ee/pohja-tre"
+        },
+    ],
+    "ethiopia": [
+        {
+            name: "የኢትዮጵያ ብሔራዊ ሬዲዮ",
+            logo: "stations/images-europe/ethiopia/EBC.png",
+            url: "https://stream.zeno.fm/ad402tap7yzuv"
         },
     ],
     "faroe": [
@@ -2860,6 +2943,48 @@ var stations = {
             name: "Virgin Radio",
             logo: "stations/images-europe/france/Virgin Radio.png",
             url: "https://virginradio.ice.infomaniak.ch/virgin-radio.mp3"
+        },
+    ],
+    "gambia": [
+        {
+            name: "AfriRadio",
+            logo: "stations/images-europe/gambia/AfriRadio.png",
+            url: "https://a3.asurahosting.com:6060/radio.mp3"
+        },
+        {
+            name: "Choice FM",
+            logo: "stations/images-europe/gambia/Choice FM.png",
+            url: "https://uk3-pn.mixstream.net/8276/stream.mp3"
+        },
+        {
+            name: "Hot FM",
+            logo: "stations/images-europe/gambia/Hot FM.png",
+            url: "https://uk3-pn.mixstream.net/8062/listen.mp3"
+        },
+        {
+            name: "Paradise FM",
+            logo: "stations/images-europe/gambia/Paradise FM.png",
+            url: "https://s1.voscast.com:10971/stream"
+        },
+        {
+            name: "QRadio",
+            logo: "stations/images-europe/gambia/QRadio.png",
+            url: "https://stream.zeno.fm/lffppyprgluuv"
+        },
+        {
+            name: "RFI Afrique",
+            logo: "stations/images-europe/chad/RFI Afrique.png",
+            url: "https://rfiafrique64k.ice.infomaniak.ch/rfiafrique-64.mp3"
+        },
+        {
+            name: "West Coast Radio 92.1",
+            logo: "stations/images-europe/gambia/West Coast Radio.png",
+            url: "https://westcoast.gm:8480/westcoast921"
+        },
+        {
+            name: "West Coast Radio 95.3",
+            logo: "stations/images-europe/gambia/West Coast Radio.png",
+            url: "https://westcoast.gm:8480/stream"
         },
     ],
     "georgia": [
@@ -9373,6 +9498,28 @@ var stations = {
             name: "MCOT Radio Network",
             logo: "stations/images-europe/thailand/MCOT Radio Network.png",
             url: "https://lb-media.mcot.net/RegionRadio/Chonburi.stream_aac/playlist.m3u8"
+        },
+    ],
+    "togo": [
+        {
+            name: "Radio Kara",
+            logo: "stations/images-europe/togo/Radio Kara.png",
+            url: "https://stream.zeno.fm/2bsx1sxr2vduv"
+        },
+        {
+            name: "Radio Lomé",
+            logo: "stations/images-europe/togo/Radio Lomé.png",
+            url: "https://stream.zeno.fm/umeg0b00hyduv"
+        },
+        {
+            name: "RFI Afrique",
+            logo: "stations/images-europe/chad/RFI Afrique.png",
+            url: "https://rfiafrique64k.ice.infomaniak.ch/rfiafrique-64.mp3"
+        },
+        {
+            name: "Zephyr FM",
+            logo: "stations/images-europe/togo/Zephyr FM.png",
+            url: "https://usa18.fastcast4u.com/proxy/zephyr?mp=/1/;"
         },
     ],
     "tunis": [

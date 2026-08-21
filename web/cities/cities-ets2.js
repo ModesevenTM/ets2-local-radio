@@ -95,6 +95,12 @@ var country_properties = {
         code: "be",
         relative_radius: 0.6,
     },
+    "benin": {
+        name: "Bénin",
+        name_english: "Benin",
+        code: "bj",
+        relative_radius: 1.25,
+    },
     "bosnia": {
         name: "Bosna i Hercegovina",
         name_english: "Bosnia and Herzegovina",
@@ -123,7 +129,7 @@ var country_properties = {
         name: "Cameroun",
         name_english: "Cameroon",
         code: "cm",
-        relative_radius: 0.5,
+        relative_radius: 1,
     },
     "car": {
         name: "République centrafricaine",
@@ -243,7 +249,7 @@ var country_properties = {
         name: "The Gambia",
         name_english: "The Gambia",
         code: "gm",
-        relative_radius: 1,
+        relative_radius: 0.4,
     },
     "georgia": {
         name: "საქართველო",
@@ -693,7 +699,7 @@ var country_properties = {
         name: "Nigeria",
         name_english: "Nigeria",
         code: "ng",
-        relative_radius: 0.5,
+        relative_radius: 1.2,
     },
     "nireland": {
         name: "Northern Ireland",
@@ -753,7 +759,7 @@ var country_properties = {
         name: "Sénégal",
         name_english: "Senegal",
         code: "sn",
-        relative_radius: 1,
+        relative_radius: 0.5,
     },
     "serbia": {
         name: "Србија",
@@ -875,6 +881,12 @@ var country_properties = {
         code: "th",
         relative_radius: 1,
     },
+    "togo": {
+        name: "Togo",
+        name_english: "Togo",
+        code: "tg",        
+        relative_radius: 1.25,
+    },
     "tunis": {
         name: "تونس",
         name_english: "Tunisia",
@@ -967,6 +979,9 @@ var city_properties = {
     },
     "aksai": {
         relative_radius: 0.6,
+    },
+    "akra": {
+        relative_radius: 1.25,
     },
     "aktobe": {
         relative_radius: 0.8,
@@ -1126,6 +1141,9 @@ var city_properties = {
     "bodrum": {
         relative_radius: 0.6,
     },
+    "bogue": {
+        relative_radius: 1.2,
+    },
     "bonn": {
         relative_radius: 0.5,
     },
@@ -1149,6 +1167,9 @@ var city_properties = {
     },
     "budapest": {
         relative_whitenoise: 0.85,
+    },
+    "bulobarde": {
+        relative_radius: 1.35,
     },
     "burg": {
         relative_radius: 0.5,
@@ -1267,6 +1288,9 @@ var city_properties = {
         relative_radius: 0.9,
         relative_whitenoise: 0.9,
     },
+    "doubagos": {
+        relative_radius: 0.5,
+    },
     "dover": {
         relative_radius: 0.6,
     },
@@ -1307,6 +1331,9 @@ var city_properties = {
     "faya": {
         relative_radius: 3,
     },
+    "ferfer": {
+        relative_radius: 0.75,
+    },
     "finnsnes": {
         relative_radius: 0.6,
     },
@@ -1331,8 +1358,18 @@ var city_properties = {
     "forst": {
         relative_radius: 0.6,
     },
+    "fotokol": {
+        relative_radius: 0.5,
+    },
     "gaellivare": {
         relative_radius: 0.7,
+    },
+    "gambaru": {
+        relative_radius: 0.45,
+    },
+    "garissa": {
+        relative_radius: 1.3,
+        relative_whitenoise: 0.9,
     },
     "garyan": {
         relative_radius: 1.2,
@@ -1349,6 +1386,9 @@ var city_properties = {
     },
     "geneve": {
         relative_radius: 0.7,
+    },
+    "gombe": {
+        relative_radius: 1.5,
     },
     "golfech": {
         relative_radius: 1.3,
@@ -1391,6 +1431,9 @@ var city_properties = {
     },
     "hadzhico": {
         relative_radius: 0.5,
+    },
+    "hagadera": {
+        relative_radius: 1.3,
     },
     "hairatan": {
         relative_radius: 0.5,
@@ -1458,6 +1501,10 @@ var city_properties = {
         relative_radius: 0.7,
         relative_whitenoise: 0.85,
     },
+    "jalingo": {
+        relative_radius: 1.75,
+        relative_whitenoise: 0.85,
+    },
     "jankoi": {
         relative_radius: 0.8,
     },
@@ -1490,6 +1537,9 @@ var city_properties = {
     },
     "kandahar": {
         relative_whitenoise: 0.8,
+    },
+    "kaolack": {
+        relative_radius: 2.8,
     },
     "karabalyk": {
         relative_radius: 0.5,
@@ -1588,6 +1638,12 @@ var city_properties = {
     "kotka": {
         relative_radius: 0.6,
     },
+    "koupela": {
+        relative_radius: 1.5,
+    },
+    "kousseri": {
+        relative_radius: 0.5,
+    },
     "koytendag": {
         relative_radius: 1.3,
         relative_whitenoise: 0.85,
@@ -1600,6 +1656,9 @@ var city_properties = {
     },
     "krupets": {
         relative_radius: 0.6,
+    },
+    "kumasi": {
+        relative_radius: 1.15,
     },
     "kunda": {
         relative_radius: 0.6,
@@ -1746,8 +1805,14 @@ var city_properties = {
     "nadzhigo": {
         relative_radius: 0.4,
     },
+    "nairobi": {
+        relative_radius: 1.4,
+    },
     "nakhl": {
         relative_radius: 0.7,
+    },
+    "nakuru": {
+        relative_radius: 1.2,
     },
     "naroulia": {
         relative_radius: 0.6,
@@ -1778,6 +1843,9 @@ var city_properties = {
     },
     "ngoura": {
         relative_radius: 1.3,
+    },
+    "nguni": {
+        relative_radius: 1.2,
     },
     "nikel": {
         relative_radius: 0.6,
@@ -1946,6 +2014,9 @@ var city_properties = {
     "ronne": {
         relative_radius: 0.4,
     },
+    "rosso": {
+        relative_radius: 1.5,
+    },
     "rostock": {
         relative_radius: 0.7,
         relative_whitenoise: 0.95,
@@ -2100,6 +2171,9 @@ var city_properties = {
     },
     "tallinn": {
         relative_radius: 0.65,
+    },
+    "tamale": {
+        relative_radius: 1.5,
     },
     "tambov": {
         relative_radius: 2.25,
@@ -21214,6 +21288,65 @@ var cities_west_africa = [
     },
 ];
 
+var cities_africa_rc = [
+    {
+        "gameName": "abakaliki",
+        "realName": "Abakaliki",
+        "country": "nigeria",
+        "x": "-33837.38",
+        "y": "96.08594",
+        "z": "270436.3"
+    },
+    {
+        "gameName": "akra",
+        "realName": "akra",
+        "country": "ghana",
+        "x": "-97552.38",
+        "y": "51.08984",
+        "z": "265989.8"
+    },
+    {
+        "gameName": "enugu",
+        "realName": "Enugu",
+        "country": "nigeria",
+        "x": "-39423.94",
+        "y": "76.45313",
+        "z": "269679.4"
+    },
+    {
+        "gameName": "jalingo",
+        "realName": "Jalingo",
+        "country": "nigeria",
+        "x": "-21853.93",
+        "y": "95.11719",
+        "z": "260391.2"
+    },
+    {
+        "gameName": "lome",
+        "realName": "lome",
+        "country": "togo",
+        "x": "-86315.33",
+        "y": "52.50781",
+        "z": "266643.4"
+    },
+    {
+        "gameName": "porto_novo",
+        "realName": "Porto_Novo",
+        "country": "benin",
+        "x": "-75339.81",
+        "y": "52.50781",
+        "z": "264749.4"
+    },
+    {
+        "gameName": "wukari",
+        "realName": "Wukari",
+        "country": "nigeria",
+        "x": "-25761.66",
+        "y": "73.15625",
+        "z": "265367.2"
+    },
+];
+
 cities = cities.concat(cities_rusmap); //RusMap cities
 cities = cities.concat(cities_pm230); //ProMods 2.30 cities
 cities = cities.concat(cities_pm240); //ProMods 2.40 cities
@@ -21261,3 +21394,4 @@ cities = cities.concat(cities_horn_of_africa) // Horn of Africa
 cities = cities.concat(cities_heart_of_africa) // Heart of Africa
 cities = cities.concat(cities_africa_extended) // Africa Extended
 cities = cities.concat(cities_west_africa) // West Africa
+cities = cities.concat(cities_africa_rc) // Africa road connections
