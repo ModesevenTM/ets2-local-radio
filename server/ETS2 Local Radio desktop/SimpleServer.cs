@@ -291,32 +291,6 @@ namespace ETS2_Local_Radio_server
                     Thread.Sleep(50);
                 }
             }
-            else if (context.Request.Url.AbsolutePath.StartsWith("/eskago/"))
-            {
-                string station = context.Request.Url.AbsoluteUri;
-                station = WebUtility.UrlDecode(station);
-                station = station.Split(new string[] { "/eskago/" }, StringSplitOptions.None)[1];
-
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://www.eskago.pl/radio/" + station);
-                request.AutomaticDecompression = DecompressionMethods.GZip;
-
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    string data = reader.ReadToEnd();
-
-                    Regex streamRegex = new Regex(@".*streamUrl\s=\s'(.+)';.*");
-                    string baseUrl = streamRegex.Match(data).Groups[1].Value;
-
-                    Regex icsuRegex = new Regex(".*icsu\"\\svalue=\"(.+)\"\\s.*");
-                    string append = icsuRegex.Match(data).Groups[1].Value;
-
-                    context.Response.RedirectLocation = baseUrl + append;
-                    context.Response.StatusCode = 302;
-                    context.Response.OutputStream.Flush();
-                }
-            }
             else if (File.Exists(filename))
             {
                 try

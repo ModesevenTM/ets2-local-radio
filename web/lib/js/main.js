@@ -12,6 +12,8 @@ var g_countries = {};
 var g_stations = [];
 //favourites global:
 var g_favourites = {};
+//favourites index for country global:
+var g_favourites_index = 0;
 //current country for that radio:
 var g_current_country = null;
 //current url for the radio:
@@ -139,39 +141,43 @@ function processCommand(data) {
                     setCurrentAsFavourite();
                 }
                 if (data.action == "goToFavourite") {
-                    if(g_favourites[g_current_country] != "" && g_current_country != null) {
-                        var chosen_country = g_current_country;
-                        var index = stations[chosen_country].map(function (e) {
+                    var old_index = g_favourites_index;
+                    g_favourites_index = g_favourites[g_current_country] ? (g_favourites_index + 1) % g_favourites[g_current_country].length : 0;
+                    var chosen_country = g_current_country;
+                    var index = 0;
+                    if(g_favourites[g_current_country] && g_favourites[g_current_country].length > 0 && g_current_country != null) {
+                        index = stations[chosen_country].map(function (e) {
                             return e.name;
-                        }).indexOf(g_favourites[chosen_country]);
+                        }).indexOf(g_favourites[chosen_country][g_favourites_index]);
                         if(index < 0) index = 0;
-                        if(g_current_url == stations[chosen_country][index]["url"]){
-                            var new_country = null;
-                            var new_country_next = false;
-                            for(var key in g_countries){
-                                if(g_countries.hasOwnProperty(key)){
-                                    if(g_favourites[key] == null) continue;
-                                    if(new_country == null){
-                                        new_country = g_countries[key].country;
-                                    }
-                                    if(key == g_current_country){
-                                        new_country_next = true;
-                                        continue;
-                                    }
-                                    if(new_country_next){
-                                        new_country = g_countries[key].country;
-                                        break;
-                                    }
+                    }
+                    if(g_current_url == stations[chosen_country][index]["url"] || g_favourites_index <= old_index) {
+                        var new_country = null;
+                        var new_country_next = false;
+                        for(var key in g_countries){
+                            if(g_countries.hasOwnProperty(key)){
+                                if(g_favourites[key] == null) continue;
+                                if(g_favourites[key].length == 0) continue;
+                                if(new_country == null){
+                                    new_country = g_countries[key].country;
+                                }
+                                if(key == g_current_country){
+                                    new_country_next = true;
+                                    continue;
+                                }
+                                if(new_country_next){
+                                    new_country = g_countries[key].country;
+                                    break;
                                 }
                             }
-                            chosen_country = new_country;
-                            index = stations[chosen_country].map(function (e) {
-                                return e.name;
-                            }).indexOf(g_favourites[chosen_country]);
                         }
-                        if(index < 0) index = 0;
-                        setRadioStation(stations[chosen_country][index]["url"], chosen_country, g_countries[chosen_country]["whitenoise"]);
+                        chosen_country = new_country;
+                        index = stations[chosen_country].map(function (e) {
+                            return e.name;
+                        }).indexOf(g_favourites[chosen_country][g_favourites_index]);
                     }
+                    if(index < 0) index = 0;
+                    setRadioStation(stations[chosen_country][index]["url"], chosen_country, g_countries[chosen_country]["whitenoise"]);
                 }
             }
         }
@@ -297,10 +303,10 @@ function refresh(data) {
                 //Check if there is a favourite station:
                 var index = 0;
                 $.getJSON(g_api + "/favourite/" + country_best_reception, function (favourite_lowest_distance) {
-                    if (favourite_lowest_distance["Name"] != "") {
+                    if (favourite_lowest_distance["Name"] != []) {
                         index = stations[country_best_reception].map(function (e) {
                             return e.name;
-                        }).indexOf(favourite_lowest_distance["Name"]);
+                        }).indexOf(favourite_lowest_distance["Name"][0]);
                         if (index < 0) {
                             index = 0;
                         }
@@ -653,7 +659,7 @@ function refreshStations() {
                     '<div class="play-button"></div>' +
                     '</div>' +
                         //(localStorage.getItem("fav-" + key) == stations[key][j]['name'])
-                    (g_favourites.hasOwnProperty(key) && g_favourites[key] == stations[key][j].name ? '' : '<button class="btn btn-default btn-xs top-right lang-make-favourite" onclick="setFavouriteStation(\'' + key + '\', \'' + stations[key][j]['name'].replace("'", "\\'") + '\'); $(this).css(\'background-color\', \'#2ebb1e\');">' + ((typeof g_translation !== 'undefined' && typeof g_translation['web']['make-favourite'] !== 'undefined') ? g_translation['web']['make-favourite'] : 'Make favourite') + '</button> ') +
+                    (g_favourites.hasOwnProperty(key) && g_favourites[key].includes(stations[key][j].name) ? '' : '<button class="btn btn-default btn-xs top-right lang-make-favourite" onclick="setFavouriteStation(\'' + key + '\', \'' + stations[key][j]['name'].replace("'", "\\'") + '\'); $(this).css(\'background-color\', \'#2ebb1e\');">' + ((typeof g_translation !== 'undefined' && typeof g_translation['web']['make-favourite'] !== 'undefined') ? g_translation['web']['make-favourite'] : 'Make favourite') + '</button> ') +
                     '</div>';
             }
         }
@@ -667,7 +673,7 @@ function refreshStations() {
     $(".current-station-image").attr("src", getFullLogoUrl(stations[g_current_country][index].logo));
     $(".current-station-country").html(country_properties[g_current_country].name);
     $(".current-station-flag").attr("src", "lib/flags/" + country_properties[g_current_country].code + ".svg");
-    if(g_favourites[g_current_country] == stations[g_current_country][index].name) {
+    if(g_favourites[g_current_country] && g_favourites[g_current_country].includes(stations[g_current_country][index].name)) {
         $(".music-controller-favourite > button").css("color", "#f65454");
     } else {
         $(".music-controller-favourite > button").css("color", "#ffffff");
