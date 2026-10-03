@@ -12,8 +12,6 @@ var g_countries = {};
 var g_stations = [];
 //favourites global:
 var g_favourites = {};
-//favourites index for country global:
-var g_favourites_index = 0;
 //current country for that radio:
 var g_current_country = null;
 //current url for the radio:
@@ -141,17 +139,20 @@ function processCommand(data) {
                     setCurrentAsFavourite();
                 }
                 if (data.action == "goToFavourite") {
-                    var old_index = g_favourites_index;
-                    g_favourites_index = g_favourites[g_current_country] ? (g_favourites_index + 1) % g_favourites[g_current_country].length : 0;
+                    var current_fav_index = g_favourites[g_current_country] ? g_favourites[g_current_country].indexOf(
+                        stations[g_current_country].filter(function (e) {
+                            return e.url == g_current_url;
+                    })[0].name) : 0;
+                    var new_fav_index = g_favourites[g_current_country] ? (current_fav_index + 1) % g_favourites[g_current_country].length : 0;
                     var chosen_country = g_current_country;
                     var index = 0;
                     if(g_favourites[g_current_country] && g_favourites[g_current_country].length > 0 && g_current_country != null) {
                         index = stations[chosen_country].map(function (e) {
                             return e.name;
-                        }).indexOf(g_favourites[chosen_country][g_favourites_index]);
+                        }).indexOf(g_favourites[chosen_country][new_fav_index]);
                         if(index < 0) index = 0;
                     }
-                    if(g_current_url == stations[chosen_country][index]["url"] || g_favourites_index <= old_index) {
+                    if(g_current_url == stations[chosen_country][index]["url"] || new_fav_index <= current_fav_index) {
                         var new_country = null;
                         var new_country_next = false;
                         for(var key in g_countries){
@@ -174,7 +175,7 @@ function processCommand(data) {
                         chosen_country = new_country;
                         index = stations[chosen_country].map(function (e) {
                             return e.name;
-                        }).indexOf(g_favourites[chosen_country][g_favourites_index]);
+                        }).indexOf(g_favourites[chosen_country][new_fav_index]);
                     }
                     if(index < 0) index = 0;
                     setRadioStation(stations[chosen_country][index]["url"], chosen_country, g_countries[chosen_country]["whitenoise"]);
